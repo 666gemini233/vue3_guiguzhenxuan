@@ -1,19 +1,15 @@
 <template>
-  <div class="box">
-    <h1>我是App</h1>
+  <div>
+    <h1>测试</h1>
   </div>
 </template>
+<script setup lang="ts" >
 
-<script setup lang="ts"></script>
-
+</script>
 <style scoped lang="scss">
-.box {
-  width: 600px;
-  height: 400px;
-  background: black;
-
+div {
   h1 {
-    color: white;
+    color: $base-color;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <!-- 顶部左侧静态 -->
-  <el-icon style="margin-right: 10px" @click="changeIcon">
+  <el-icon style="margin-right: 10px; cursor: pointer" @click="changeIcon">
     <component :is="LayOutSettingStore.fold ? 'Fold' : 'Expand'"></component>
   </el-icon>
   <!-- 左侧面包屑 -->

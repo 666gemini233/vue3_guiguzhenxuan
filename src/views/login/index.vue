@@ -62,7 +62,7 @@ let $route = useRoute()
 //定义变量控制按钮加载效果
 let loading = ref(false)
 //收集账号密码数据
-let loginForm = reactive({ username: 'admin', password: '111111' })
+let loginForm = reactive({ username: 'admin', password: 'atguigu123' })
 //登录按钮回调
 const login = async () => {
   //保证全部表单项校验通过再发请求

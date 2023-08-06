@@ -3,8 +3,10 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 //引入element-plus提供的全部图标组件
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+import Category from './Category/index.vue'
+
 //全局对象
-const allGloablComponent: any = { SvgIcon }
+const allGloablComponent: any = { SvgIcon, Category }
 //对外暴露插件对象
 export default {
   install(app: any) {

@@ -12,8 +12,15 @@
           <Sex class="sex"></Sex>
           <Age class="age"></Age>
         </div>
-        <div class="center">中间</div>
-        <div class="right">右侧</div>
+        <div class="center">
+          <Map class="map"></Map>
+          <Line class="line"></Line>
+        </div>
+        <div class="right">
+          <Rank class="rank"></Rank>
+          <Year class="year"></Year>
+          <Couter class="couter"></Couter>
+        </div>
       </div>
     </div>
   </div>
@@ -27,6 +34,13 @@ import Top from './components/top/index.vue'
 import Age from './components/age/index.vue'
 import Sex from './components/sex/index.vue'
 import Tourist from './components/tourist/index.vue'
+//引入中间两个子组件
+import Map from './components/map/index.vue'
+import Line from './components/line/index.vue'
+//引入右侧三个子组件
+import Rank from './components/rank/index.vue'
+import Year from './components/year/index.vue'
+import Couter from './components/couter/index.vue'
 //获取数据大屏展示内容的盒子
 let screen = ref<any>()
 onMounted(() => {
@@ -80,9 +94,29 @@ window.onresize = () => {
       }
       .center {
         flex: 2;
+        display: flex;
+        flex-direction: column;
+        .map {
+          flex: 4;
+        }
+        .line {
+          flex: 1;
+        }
       }
       .right {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 1040px;
+        .rank {
+          flex: 1.2;
+        }
+        .year {
+          flex: 1;
+        }
+        .couter {
+          flex: 1;
+        }
       }
     }
   }

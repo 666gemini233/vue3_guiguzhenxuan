@@ -28,14 +28,14 @@ onMounted(() => {
   let mycharts = echarts.init(charts.value)
   //设置实例的配置项
   mycharts.setOption({
-    //标题组件
-    title: {
-      text: '',
-    },
-    //x轴组件
-    xAxis: {},
-    //y轴组件
-    yAxis: {},
+    // //标题组件
+    // title: {
+    //   text: '',
+    // },
+    // //x轴组件
+    // xAxis: {},
+    // //y轴组件
+    // yAxis: {},
     //系列：决定展示什么样的图形图标
     series: {
       type: 'liquidFill',
@@ -53,12 +53,12 @@ onMounted(() => {
       },
     },
     //布局组件
-    grid: {
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-    },
+    // grid: {
+    //   left: 0,
+    //   right: 0,
+    //   top: 0,
+    //   bottom: 0,
+    // },
   })
 })
 </script>
@@ -67,7 +67,7 @@ onMounted(() => {
 .box {
   background: url(../../images/dataScreen-main-lb.png) no-repeat;
   background-size: 100% 100%;
-  margin-top: 10px;
+  margin: 10px 0;
   .top {
     margin-left: 20px;
     .title {

@@ -24,18 +24,16 @@ const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn,
 })
-
 //安装自定义插件
 app.use(gloalComponent)
-
 //安装仓库
 app.use(pinia)
-
 //注册模板路由
 app.use(router)
-
 //引入路由鉴权文件
 import './permisstion'
-
+//引入自定义指令文件
+import { isHasButton } from './directive/has'
+isHasButton(app)
 //将应用挂载到载点上
 app.mount('#app')

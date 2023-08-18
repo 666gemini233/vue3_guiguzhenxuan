@@ -1,7 +1,13 @@
 <template>
   <el-card class="box-card">
     <!-- 卡片顶部添加品牌按钮 -->
-    <el-button type="primary" size="default" icon="Plus" @click="addTrademark">
+    <el-button
+      v-has="`btn.Trademark.add`"
+      type="primary"
+      size="default"
+      icon="Plus"
+      @click="addTrademark"
+    >
       添加品牌
     </el-button>
     <!-- 表格组件，用于展示已有的品牌数据 -->
@@ -121,7 +127,6 @@ import type {
   TradeMark,
 } from '@/api/product/trademark/type'
 import { ElMessage, type UploadProps } from 'element-plus'
-
 //当前页码
 let pageNo = ref<number>(1)
 //每页展示多少条数据

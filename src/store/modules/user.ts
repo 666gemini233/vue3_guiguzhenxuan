@@ -12,8 +12,22 @@ import type { UserState } from './types/type'
 //引入操作本地存储的工具方法
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 //引入路由
-import { constantRoute } from '@/router/routes'
-
+import { constantRoute, asyncRoute, anyRoute } from '@/router/routes'
+import router from '@/router'
+//引入深拷贝方法
+//@ts-ignore
+import cloneDeep from 'lodash/cloneDeep'
+//用于过滤当前用户需要展示的异步路由
+function filterAsyncRoute(asyncRoute: any, routes: any) {
+  return asyncRoute.filter((item: any) => {
+    if (routes.includes(item.name)) {
+      if (item.children && item.children.length > 0) {
+        item.children = filterAsyncRoute(item.children, routes)
+      }
+      return true
+    }
+  })
+}
 //创建用户小仓库
 let useUserStore = defineStore('User', {
   //小仓库存储数据的地方
@@ -23,6 +37,8 @@ let useUserStore = defineStore('User', {
       menuRoutes: constantRoute,
       username: '',
       avatar: '',
+      //存储当前用户是否包含某一个按钮
+      buttons: [],
     }
   },
   //异步|逻辑的地方
@@ -31,6 +47,7 @@ let useUserStore = defineStore('User', {
     async userLogin(data: loginFormData) {
       //登录请求
       let result: loginResponseData = await reqLogin(data)
+
       //成功200-token
       //失败201-登录失败的错误信息
       if (result.code === 200) {
@@ -53,6 +70,18 @@ let useUserStore = defineStore('User', {
       if (result.code === 200) {
         this.username = result.data.name
         this.avatar = result.data.avatar
+        this.buttons = result.data.buttons
+        //计算当前用户需要展示的异步路由
+        let userAsyncRoute = filterAsyncRoute(
+          cloneDeep(asyncRoute),
+          result.data.routes,
+        )
+        //菜单的数据
+        this.menuRoutes = [...constantRoute, ...userAsyncRoute, anyRoute]
+        //动态追加异步和任意路由
+        ;[...userAsyncRoute, anyRoute].forEach((route: any) => {
+          router.addRoute(route)
+        })
         return 'ok'
       } else {
         return Promise.reject(new Error(result.message))

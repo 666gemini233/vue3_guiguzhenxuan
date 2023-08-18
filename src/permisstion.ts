@@ -12,7 +12,7 @@ let userStore = useUserStore(pinia)
 
 //全局守卫：项目中任意路由切换都会触发的钩子
 //全局前置守卫
-router.beforeEach(async (to: any, from: any, next: any) => {
+router.beforeEach(async (to: any, next: any) => {
   //访问某个路由之前守卫
   nprogress.start()
   //获取token，判断是否登录
@@ -55,7 +55,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
   }
 })
 //全局后置守卫
-router.afterEach((to: any, from: any) => {
+router.afterEach((to: any) => {
   document.title = setting.title + '-' + to.meta.title
   nprogress.done()
 })

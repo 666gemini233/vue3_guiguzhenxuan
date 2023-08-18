@@ -20,7 +20,7 @@
         width="200px"
       ></el-table-column>
       <el-table-column label="图片" width="200px">
-        <template #="{ row, $index }">
+        <template #="{ row }">
           <img
             :src="row.skuDefaultImg"
             alt=""
@@ -39,7 +39,7 @@
         prop="price"
       ></el-table-column>
       <el-table-column label="操作" width="250px" fixed="right">
-        <template #="{ row, $index }">
+        <template #="{ row }">
           <el-button
             @click="updateSale(row)"
             :type="row.isSale == 1 ? 'info' : 'success'"

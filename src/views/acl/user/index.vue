@@ -66,7 +66,7 @@
         prop="updateTime"
       ></el-table-column>
       <el-table-column label="操作" width="300px" align="center">
-        <template #="{ row, $index }">
+        <template #="{ row }">
           <el-button
             @click="setRole(row)"
             type="primary"
@@ -326,7 +326,7 @@ const cancel = () => {
   drawer.value = false
 }
 //校验用户名字的回调函数
-const validatorUsername = (rule: any, value: any, callback: any) => {
+const validatorUsername = (value: any, callback: any) => {
   //用户名字|昵称，长度至少为5位
   if (value.trim().length >= 5) {
     callback()
@@ -335,7 +335,7 @@ const validatorUsername = (rule: any, value: any, callback: any) => {
   }
 }
 //校验用户昵称的回调函数
-const validatorname = (rule: any, value: any, callback: any) => {
+const validatorname = (value: any, callback: any) => {
   //用户名字|昵称，长度至少为5位
   if (value.trim().length >= 5) {
     callback()
@@ -344,7 +344,7 @@ const validatorname = (rule: any, value: any, callback: any) => {
   }
 }
 //校验用户密码的回调函数
-const validatorPassword = (rule: any, value: any, callback: any) => {
+const validatorPassword = (value: any, callback: any) => {
   //用户名字|昵称，长度至少为5位
   if (value.trim().length >= 6) {
     callback()

@@ -26,10 +26,10 @@
             prop="attrName"
           ></el-table-column>
           <el-table-column label="属性值名称">
-            <template #="{ row, $index }">
+            <template #="{ row }">
               <el-tag
                 style="margin: 5px"
-                v-for="(item, index) in row.attrValueList"
+                v-for="item in row.attrValueList"
                 :key="item.id"
               >
                 {{ item.valueName }}
@@ -37,7 +37,7 @@
             </template>
           </el-table-column>
           <el-table-column label="操作" width="120px">
-            <template #="{ row, $index }">
+            <template #="{ row }">
               <!-- 修改已有属性的按钮 -->
               <el-button
                 @click="updateAttr(row)"
@@ -110,7 +110,7 @@
             </template>
           </el-table-column>
           <el-table-column label="属性值操作">
-            <template #="{ row, index }">
+            <template #="{ index }">
               <el-button
                 type="danger"
                 size="small"

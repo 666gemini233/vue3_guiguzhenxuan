@@ -20,17 +20,17 @@
       ></el-table-column>
       <!-- table-column:默认展示数据用div -->
       <el-table-column label="品牌名称">
-        <template #="{ row, $index }">
+        <template #="{ row }">
           <pre>{{ row.tmName }}</pre>
         </template>
       </el-table-column>
       <el-table-column label="品牌LOGO">
-        <template #="{ row, $index }">
+        <template #="{ row }">
           <img :src="row.logoUrl" alt="" style="width: 100px; height: 100px" />
         </template>
       </el-table-column>
       <el-table-column label="品牌操作">
-        <template #="{ row, $index }">
+        <template #="{ row }">
           <el-button
             type="warning"
             size="small"
@@ -267,10 +267,7 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
 }
 
 //图片上传成功的钩子
-const handleAvatarSuccess: UploadProps['onSuccess'] = (
-  response,
-  uploadFile,
-) => {
+const handleAvatarSuccess: UploadProps['onSuccess'] = (response) => {
   //response：即为当前上传图片post请求服务器返回数据
   //收集上传图片的地址，添加一个新的品牌时带给服务器
   trademarkParams.logoUrl = response.data
@@ -279,7 +276,7 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
 }
 
 //品牌自定义校验规则方法
-const validatorTmName = (rule: any, value: any, callBack: any) => {
+const validatorTmName = (value: any, callBack: any) => {
   //是当表单元素触发blur时候,会触发此方法
   //自定义校验规则
   if (value.trim().length >= 2) {
@@ -291,7 +288,7 @@ const validatorTmName = (rule: any, value: any, callBack: any) => {
 }
 
 //品牌LOGO图片的自定义校验规则方法
-const validatorLogoUrl = (rule: any, value: any, callBack: any) => {
+const validatorLogoUrl = (value: any, callBack: any) => {
   //如果图片上传
   if (value) {
     callBack()

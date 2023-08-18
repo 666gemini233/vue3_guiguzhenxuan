@@ -45,7 +45,7 @@
         prop="updateTime"
       ></el-table-column>
       <el-table-column label="操作" width="300px" align="center">
-        <template #="{ row, $index }">
+        <template #="{ row }">
           <el-button
             @click="setPermisstion(row)"
             type="primary"
@@ -240,7 +240,7 @@ const updateRole = (row: RoleData) => {
   })
 }
 //角色名称校验规则
-const validatorRoleName = (rule: any, value: any, callback: any) => {
+const validatorRoleName = (value: any, callback: any) => {
   if (value.trim().length >= 2) {
     callback()
   } else {

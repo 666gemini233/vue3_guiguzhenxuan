@@ -28,7 +28,7 @@
             show-overflow-tooltip
           ></el-table-column>
           <el-table-column label="SPU操作">
-            <template #="{ row, $index }">
+            <template #="{ row }">
               <el-button
                 @click="addSku(row)"
                 type="primary"
@@ -98,7 +98,7 @@
           <el-table-column label="SKU价格" prop="price"></el-table-column>
           <el-table-column label="SKU重量" prop="weight"></el-table-column>
           <el-table-column label="SKU图片">
-            <template #="{ row, $index }">
+            <template #="{ row }">
               <img
                 :src="row.skuDefaultImg"
                 style="width: 100px; height: 100px"
